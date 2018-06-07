@@ -24,11 +24,11 @@ it('shows a comment box', () => {
 
 		ReactDOM.unmountComponentAtNode(div);
 	*/
-	
+	// blah blah
 	// Wrapped version of our App component
 	const wrapped = shallow(<App />);
 
 	// found a CommentBox instance
 	// find returns an array
-	expect(wrapped.find(CommentBox).length).toEqual(sin(1);
+	expect(wrapped.find(CommentBox).length).toEqual(1);
 });
