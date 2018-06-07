@@ -1,7 +1,9 @@
 import React from 'react';
 
 export default () => {
+	const string = 'The comment box component';
+	console.log(string.length);
 	return (
-		<div>The comment box component</div>
+		<div>{string}</div>
 	);
 }
