@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 
 class CommentBox extends Component {
 	state = { comment: ''};
-
-	// the folowing syntax is called a bound arrow function
+	
+	/**
+	 * Updates the state of this component. 
+	 * The folowing syntax is called a bound arrow function
+	 * 
+	 * Parameter is implicitly always the event object. 
+	 */
 	handleChange = (event) => {
 		this.setState({comment: event.target.value});
 	};
