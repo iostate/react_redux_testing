@@ -5,6 +5,13 @@ import { shallow } from 'enzyme';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 
+// Before every expectation block within this file, run this code
+// Increases code reuse
+let wrapped; // initialize the variable outside of the fn in order to allow for global scoping
+beforeEach(() => {
+	wrapped = shallow(<App />);
+});
+
 // Ensure that an instance of CommentBox is within the App component
 it('shows a comment box', () => {
 
@@ -27,11 +34,6 @@ it('shows a comment box', () => {
 		ReactDOM.unmountComponentAtNode(div);
 	*/
 
-	// Expectation: CommentBox instance found
-
-	// Wrapped version of our App component
-	const wrapped = shallow(<App />);
-
 	// found a CommentBox instance
 	// find returns an array
 	expect(wrapped.find(CommentBox).length).toEqual(1);
@@ -39,7 +41,5 @@ it('shows a comment box', () => {
 
 // Ensure that an instance of CommentList is within the App component
 it('shows a comment list', () => {
-	const wrapped = shallow(<App />);
-
 	expect(wrapped.find(CommentList).length).toEqual(1);
 });
