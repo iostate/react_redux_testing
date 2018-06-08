@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../App';
+import App from 'components/App';
 import { shallow } from 'enzyme';
-import CommentBox from '../CommentBox';
-import CommentList from '../CommentList';
+import CommentBox from 'components/CommentBox';
+import CommentList from 'components/CommentList';
 
+// Ensure that an instance of CommentBox is within the App component
 it('shows a comment box', () => {
 
 	/*
@@ -25,8 +26,6 @@ it('shows a comment box', () => {
 
 		ReactDOM.unmountComponentAtNode(div);
 	*/
-	// blah blah
-
 
 	// Expectation: CommentBox instance found
 
@@ -36,7 +35,11 @@ it('shows a comment box', () => {
 	// found a CommentBox instance
 	// find returns an array
 	expect(wrapped.find(CommentBox).length).toEqual(1);
+});
 
-	// Expectation: CommentList instance found
+// Ensure that an instance of CommentList is within the App component
+it('shows a comment list', () => {
+	const wrapped = shallow(<App />);
+
 	expect(wrapped.find(CommentList).length).toEqual(1);
 });
