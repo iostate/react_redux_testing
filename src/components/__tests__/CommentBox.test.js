@@ -19,29 +19,30 @@ it('has a text area and a button', () => {
 	expect(wrapped.find('button').length).toEqual(1); 
 });
 
-it('has a text area that users can type in', () => {
-	wrapped.find('textarea').simulate('change', {
-		target: {value: 'new comment'}
+// describe allows us to group tests together
+// allows us to use code reuse features such as beforeEach() and afterEach()
+describe('the text area', () => {
+	beforeEach(() => {
+		wrapped.find('textarea').simulate('change', {
+			target: {value: 'new comment'}
+		});
+		wrapped.update();
 	});
-	wrapped.update();
 
-	// Ensure that the fake event's value is correct
-	expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
-});
-
-it('when form is submitted, text area gets emptied', () => {
-	wrapped.find('textarea').simulate('change', {
-		target: {value: 'new comment'}
+	it('has a text area that users can type in', () => {
+		// Ensure that the fake event's value is correct
+		expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
 	});
-	wrapped.update();
 
-	// Ensure that the fake event's value is correct
-	expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
-	
-	// simulate the submit event on the form
-	wrapped.find('form').simulate('submit');
-	wrapped.update();
+	it('when form is submitted, text area gets emptied', () => {
+				// Ensure that the fake event's value is correct
+		expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
+		
+		// simulate the submit event on the form
+		wrapped.find('form').simulate('submit');
+		wrapped.update();
 
-	// check the value of the textarea and assert that it is empty
-	expect(wrapped.find('textarea').prop('value')).toEqual('');
+		// check the value of the textarea and assert that it is empty
+		expect(wrapped.find('textarea').prop('value')).toEqual('');
+	});
 });
