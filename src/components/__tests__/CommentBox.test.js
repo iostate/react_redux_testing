@@ -1,12 +1,15 @@
 import React from 'react';
 import { mount } from 'enzyme'; // Enzyme's FullDOM Rendering Module
 import CommentBox from 'components/CommentBox';
+import Root from 'Root';
 
 // Create a file wide reference to CommentBox component
 let wrapped;
 beforeEach(() => {
 	wrapped = mount(
+		<Root>
 			<CommentBox />
+		</Root>
 	);
 });
 
