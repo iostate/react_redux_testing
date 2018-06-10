@@ -2,10 +2,20 @@ import React from 'react';
 import { mount } from 'enzyme'; // Enzyme's FullDOM Rendering Module
 import CommentBox from 'components/CommentBox';
 
+
+// connect Redux to our test component
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from 'reducers';
+
 // Create a file wide reference to CommentBox component
 let wrapped;
 beforeEach(() => {
-	wrapped = mount(<CommentBox />);
+	wrapped = mount(
+		<Provider store={createStore(reducers, {})}>
+			<CommentBox />
+		</Provider>
+	);
 });
 
 afterEach(() => {
