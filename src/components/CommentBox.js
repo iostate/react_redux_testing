@@ -9,9 +9,8 @@ class CommentBox extends Component {
 	
 	/**
 	 * Updates the state of this component. 
-	 * The folowing syntax is called a bound arrow function
 	 * 
-	 * Parameter is implicitly always the event object. 
+	 * NOTE: The folowing syntax is called a bound arrow function
 	 */
 	handleChange = (event) => {
 		this.setState({comment: event.target.value});
@@ -20,11 +19,12 @@ class CommentBox extends Component {
 	handleSubmit = event => {
 		event.preventDefault();
 
+		// Save the comment
+		// Append the comment to the state 
 		this.props.saveComment(this.state.comment);
 
 		// Reset the input
 		this.setState({comment: ''});
-
 	}
 
 	render() {
